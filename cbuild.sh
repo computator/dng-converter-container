@@ -1,7 +1,7 @@
 #!/bin/sh
 set -e
 
-: ${VERSION:=10_5}
+: ${VERSION:=11_1}
 
 ctr=$(buildah from ubuntu:18.04)
 
