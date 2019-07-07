@@ -26,5 +26,8 @@ buildah config \
 	--env WINEDEBUG=-all \
 	$ctr
 
+# bug workaround
+buildah run $ctr touch /var/cache/apt/pkgcache.bin /var/cache/apt/srcpkgcache.bin
+
 img=$(buildah commit --rm $ctr dng-converter)
 buildah tag $img dng-converter:"$(printf '%s' "$VERSION" | tr _ .)"
