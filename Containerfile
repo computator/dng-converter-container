@@ -24,7 +24,8 @@ RUN set -eux; \
 	apt-get -y purge --autoremove $DEPS; \
 	rm -rf /var/lib/apt/lists/*
 
-WORKDIR /images
-ENTRYPOINT ["/usr/bin/wine", "/opt/dngconverter/drive_c/Program Files/Adobe/Adobe DNG Converter/Adobe DNG Converter.exe"]
+COPY entrypoint.sh /entrypoint.sh
 
+ENTRYPOINT ["/entrypoint.sh"]
+WORKDIR /images
 LABEL org.opencontainers.image.source=https://github.com/computator/dng-converter-ctr
